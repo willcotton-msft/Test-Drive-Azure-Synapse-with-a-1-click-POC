@@ -678,6 +678,29 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/TPCH_DS_SRC_BLOB')]",
+			"type": "Microsoft.Synapse/workspaces/datasets",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TPCH_LK_SRC_BIN",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "tpch1tb",
+						"container": "synapse1poc"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/linkedServices/TPCH_LK_SRC_BIN')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/TPCH_DS_STG_BIN')]",
 			"type": "Microsoft.Synapse/workspaces/datasets",
 			"apiVersion": "2019-06-01-preview",
